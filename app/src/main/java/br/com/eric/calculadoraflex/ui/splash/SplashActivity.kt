@@ -8,7 +8,6 @@ import android.os.Handler
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import br.com.eric.calculadoraflex.R
-import br.com.eric.calculadoraflex.ui.form.FormActivity
 import br.com.eric.calculadoraflex.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_splash.*
 
