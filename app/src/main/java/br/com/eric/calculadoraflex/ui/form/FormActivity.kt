@@ -38,8 +38,8 @@ class FormActivity : AppCompatActivity() {
 
         etGasPrice.addTextChangedListener(DecimalTextWatcher(etGasPrice))
         etEthanolPrice.addTextChangedListener(DecimalTextWatcher(etEthanolPrice))
-        etGasAverage.addTextChangedListener(DecimalTextWatcher(etGasAverage, 1))
-        etEthanolAverage.addTextChangedListener(DecimalTextWatcher(etEthanolAverage, 1))
+        etGasAverage.addTextChangedListener(DecimalTextWatcher(etGasAverage, 2))
+        etEthanolAverage.addTextChangedListener(DecimalTextWatcher(etEthanolAverage, 2))
 
         btCalculate.setOnClickListener {
             saveCarData()
@@ -67,7 +67,7 @@ class FormActivity : AppCompatActivity() {
     }
 
     private fun listenerFirebaseRealtime() {
-        val database = DatabaseUtil.getDatabase()
+        DatabaseUtil.getDatabase()
             .getReference(firebaseReferenceNode)
             .child(userId)
             .addValueEventListener(object : ValueEventListener {
