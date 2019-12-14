@@ -12,16 +12,19 @@ import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
         mAuth = FirebaseAuth.getInstance()
+        //cria no authentication
         btCreate.setOnClickListener {
             mAuth.createUserWithEmailAndPassword(
                 inputEmail.text.toString(),
                 inputPassword.text.toString()
             ).addOnCompleteListener {
                 if (it.isSuccessful) {
+                    //cria no real time database
                     saveInRealTimeDatabase()
                 } else {
                     Toast.makeText(this@SignUpActivity, it.exception?.message,
@@ -33,6 +36,7 @@ class SignUpActivity : AppCompatActivity() {
     private fun saveInRealTimeDatabase() {
         val user = User(inputName.text.toString(), inputEmail.text.toString(),
             inputPhone.text.toString())
+        //pega o uid e salva o usuario
         FirebaseDatabase.getInstance().getReference("Users")
             .child(FirebaseAuth.getInstance().currentUser!!.uid)
             .setValue(user)
